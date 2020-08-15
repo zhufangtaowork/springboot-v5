@@ -1,0 +1,32 @@
+server:
+  port: 1234
+#mysql配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot_local?useunicode=true&characterEncoding=utf8
+    username: root
+    password: root123456
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+      lettuce:
+        shutdown-timeout: 0
+  application:
+    name: springboot-v5
+#mybatis配置
+mybatis:
+  typeAliasesPackage: com.example.springbootv5.pojo
+  mapperLocations: classpath:sqlXml/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+

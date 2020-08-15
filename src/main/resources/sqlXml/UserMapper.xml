@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springbootv5.mapper.UserMapper">
+    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into s_local (name,password,create_time,update_time) value (#{name},#{password},now(),now())
+    </insert>
+    <update id="moveMoneyOut">
+        update s_local set money = money-#{moveOutMoney} where id = #{moveOutId}
+    </update>
+    <update id="moveMoneyIn">
+        update s_local set money = money+#{moveInMoney} where id = #{moveInId}
+    </update>
+    <select id="selectUserByUserNameAndPassword" resultType="User">
+        select * from s_local where name = #{username} and password = #{password}
+    </select>
+    <select id="userList" resultType="User">
+        select * from s_local where status = 1
+        <choose>
+            <when test="isLike==1">and name = #{name}</when>
+            <when test="isLike==2">and name like concat('%',#{name},'%')</when>
+            <otherwise>and name = #{name}</otherwise>
+        </choose>
+        <choose>
+            <when test="order==1"> order by create_time</when>
+            <otherwise> order by create_time</otherwise>
+        </choose>
+        <choose>
+            <when test="sort==1"> DESC</when>
+            <when test="sort==2"> ASC</when>
+        </choose>
+    </select>
+</mapper>
