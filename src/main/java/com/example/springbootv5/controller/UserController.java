@@ -67,18 +67,33 @@ public class UserController {
 
     @ApiOperation(value = "用户列表接口")
     @PostMapping("user/list")
-    public ResultView userList(@ApiParam(name = "Map对象",value = "参数</br>1.page:页码（选填-默认1）</br>2.pageSize:一页数据量(选填-默认5)</br>3.order:排序字段(选填默认创建时间，1-创建时间排序)</br>4.sort:序列(选填默认降序，1-降序，2-升序)</br>5.name:姓名(默认全称匹配）</br>6.isLike:匹配模式(默认全称匹配，1-全称，2-模糊）</br>") @RequestBody HashMap<String,Object> paramsMap) {
+    public ResultView<User> userList(@ApiParam(name = "Map对象",value = "参数</br>1.page:页码（选填-默认1）</br>2.pageSize:一页数据量(选填-默认5)</br>3.order:排序字段(选填默认创建时间，1-创建时间排序)</br>4.sort:序列(选填默认降序，1-降序，2-升序)</br>5.name:姓名(默认全称匹配）</br>6.isLike:匹配模式(默认全称匹配，1-全称，2-模糊）</br>") @RequestBody HashMap<String,Object> paramsMap) {
         log.info("userList params {}",JSON.toJSONString(paramsMap));
         JSONObject jsonParams = new JSONObject(paramsMap);
         PageInfo<User> userPageInfo = userService.userList(jsonParams);
         if (Optional.ofNullable(userPageInfo).isPresent()){
-            ResultView resultView = new ResultView();
+            ResultView resultView = new ResultView<User>();
             resultView.setMsgCode(ResultCode.SUCCESS);
             resultView.setPageNum(userPageInfo.getPageNum());
             resultView.setPageSize(userPageInfo.getPageSize());
             resultView.setTotal(userPageInfo.getTotal());
             resultView.setMaxPage(userPageInfo.getPages());
             resultView.setData(userPageInfo.getList());
+            return resultView;
+        }
+        return null;
+    }
+
+
+    @ApiOperation(value = "用户详情接口")
+    @GetMapping("user/{id}")
+    public ResultView userDetail(@ApiParam(name = "用户id",value = "参数</br>1.id:用户id") @PathVariable Integer id) {
+        log.info("userDetail params {}",JSON.toJSONString(id));
+        User user = userService.userDetail(id);
+        if (Optional.ofNullable(user).isPresent()){
+            ResultView resultView = new ResultView();
+            resultView.setMsgCode(ResultCode.SUCCESS);
+            resultView.setData(user);
             return resultView;
         }
         return null;

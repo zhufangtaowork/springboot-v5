@@ -69,4 +69,10 @@ public class UserServiceImpl implements UserService {
         return userPageInfo;
     }
 
+    @Override
+    public User userDetail(Integer id) {
+        User user = userMapper.userDetail(id);
+        return user;
+    }
+
 }

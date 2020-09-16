@@ -29,4 +29,7 @@
             <when test="sort==2"> ASC</when>
         </choose>
     </select>
+    <select id="userDetail" resultType="com.example.springbootv5.pojo.User">
+        select * from s_local where id = #{id} and status = 1
+    </select>
 </mapper>

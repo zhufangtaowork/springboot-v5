@@ -66,4 +66,14 @@ public interface UserMapper {
      * @Date: 2020/8/10 10:44 上午
      */
     List<User> userList(JSONObject jsonParams);
+
+    /**
+     * 功能描述: <br>
+     * 〈根据用户id查询用户〉
+     * @Param: [id]
+     * @Return: com.example.springbootv5.pojo.User
+     * @Author: zft
+     * @Date: 2020/8/17 10:40 上午
+     */
+    User userDetail(Integer id);
 }

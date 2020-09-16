@@ -52,4 +52,14 @@ public interface UserService {
      * @return
      */
     PageInfo<User> userList(JSONObject jsonParams);
+
+    /**
+     * 功能描述: <br>
+     * 〈根据id查询用户〉
+     * @Param: [id]
+     * @Return: com.example.springbootv5.pojo.User
+     * @Author: zft
+     * @Date: 2020/8/17 10:39 上午
+     */
+    User userDetail(Integer id);
 }

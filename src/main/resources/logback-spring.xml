@@ -7,7 +7,7 @@
     <!-- 彩色日志格式 -->
     <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:- %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%3p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(traceId:[%X{traceId}]--[%10t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
     <!--  定义日志存储的地址 -->
-    <property name="log_address" value="/usr/data" />
+    <property name="log_address" value="/Users/fangtaozhu/Downloads/workPace/logback-log" />
     <contextName>springboot-v5</contextName>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
