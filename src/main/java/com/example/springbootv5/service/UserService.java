@@ -60,6 +60,7 @@ public interface UserService {
      * @Return: com.example.springbootv5.pojo.User
      * @Author: zft
      * @Date: 2020/8/17 10:39 上午
+     * @param id
      */
     User userDetail(Integer id);
 }
