@@ -25,7 +25,7 @@ public interface UserMapper {
      * @Author: zft
      * @Date: 2020/7/31 4:51 下午
      */
-    User selectUserByUserNameAndPassword(JSONObject paramsJson);
+    User selectUserByUserNameAndPassword(@Param("paramsJson") JSONObject paramsJson);
 
     /**
      * 功能描述: <br>

@@ -87,11 +87,11 @@ public class UserController {
 
     @ApiOperation(value = "用户详情接口")
     @GetMapping(value = "user/{id}", headers = "Accept=application/json")
-    public ResultView userDetail(@ApiParam(name = "用户id", required = true) @PathVariable(value = "id") Integer id) {
+    public ResultView<User> userDetail(@ApiParam(name = "用户id", required = true) @PathVariable(value = "id") Integer id) {
         log.info("userDetail params {}",JSON.toJSONString(id));
         User user = userService.userDetail(id);
         if (Optional.ofNullable(user).isPresent()){
-            ResultView resultView = new ResultView();
+            ResultView<User> resultView = new ResultView<>();
             resultView.setMsgCode(ResultCode.SUCCESS);
             resultView.setData(user);
             return resultView;

@@ -51,7 +51,7 @@ public class SqlPrintInterceptor implements Interceptor {
 		long end = System.currentTimeMillis();
 		long timing = end - start;
 		if (log.isInfoEnabled()) {
-			log.info("执行sql耗时:{} ms - id:{}", timing, statementId);
+			log.info("id:{} - 执行sql耗时:{} ms", statementId, timing);
 			log.info("Sql:{}", sql);
 		}
 		return result;
