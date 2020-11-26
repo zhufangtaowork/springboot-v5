@@ -5,6 +5,8 @@ import com.example.springbootv5.common.ResultCode;
 import com.example.springbootv5.mapper.UserMapper;
 import com.example.springbootv5.pojo.User;
 import com.example.springbootv5.service.UserService;
+import com.example.springbootv5.thread.PrintThread;
+import com.example.springbootv5.until.IpToAddressUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -75,4 +77,12 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+
+    public static void main(String[] args) throws Exception {
+        String ipAddress = "180.164.126.4";
+//        String ipAddress = "113.108.182.52";
+        String cityInfo = IpToAddressUtil.getCityInfo(ipAddress);
+        System.out.println("cityInfo = " + cityInfo);
+    }
 }
+
