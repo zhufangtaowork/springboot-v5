@@ -75,6 +75,7 @@ public class UserController {
         }
         log.info("第一次测试");
         log.info("第二次测试");
+        log.info("第三次测试");
         return new ResultView().setMsgCode(ResultCode.FAIL);
     }
 
