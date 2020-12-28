@@ -73,7 +73,7 @@ public class UserController {
         if (result) {
             return new ResultView().setMsgCode(ResultCode.SUCCESS);
         }
-
+        log.info("diyici");
         return new ResultView().setMsgCode(ResultCode.FAIL);
     }
 
